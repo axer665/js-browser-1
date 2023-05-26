@@ -23,17 +23,18 @@ const calculate = (seconds) => {
 
 
 const timer = document.getElementById("timer");
-timerText = timer.innerText;
-timer.innerText = calculate(timerText);
+timerText = timer.textContent;
+timer.textContent = calculate(timerText);
 
 // запускаем таймер
-setInterval(function(){
+const interval = setInterval(function(){
     if (timerText > 0) {
         timerText--;
-        timer.innerText = calculate(timerText);
+        timer.textContent = calculate(timerText);
     } else {
         alert("Вы победили в конкурсе!");
-        clearInterval(this); //останавливаем таймер
+        clearInterval(interval); //останавливаем таймер
+        timer.textContent = "Вы победили в конкурсе"
         const link = document.getElementById("link_download"); //
         link.click(); 
     }
